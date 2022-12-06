@@ -1,0 +1,53 @@
+Shell scripting:
+-----------------
+
+Types of shell-
+
+1. Bourne shell   -1st shell which is developed for unix. we can access this shell by using sh command
+2. Bash shell
+3. Korn shell
+4. Cshell                   
+5.Tshell
+6.Zshell
+
+_____________________________________________________
+shell script is a program which contains a group of commands.
+
+gedit test.sh   -->it will create an empty file called test .sh. If the file is already there it will open the file for editing purpose.
+ctrl +s - >save
+ctrl+q  ->quit
+
+If the user has execute permission on the script, then only he can execute
+
+rw-  ==>user permission
+r--==>group permission
+r--==>other permission
+
+chmod u+x test2.sh    ==> giving execute permission
+ to the user
+________________________________________________
+1. bourne shell   -->sh ./test2.sh --> script executes by bourne shell
+
+2. bash shell  --> advanced version of bourne shell. default shell for most of the linux flavours
+
+3.korn shell  -->used in ibm aix operating system. we can access by using ksh command
+ 4. cshell  -->by using csh command we can access this shell
+
+5. T shell  --> by using tcsh command we can access this shell
+6. zshell   -->by using zsh command we can access this shell
+--------------------------------------------------------------------------
+
+bash is most commonly used in linux environment
+
+$ echo $0   --> To check which is the default shell in my system
+    OR
+$ echo $SHELL
+     OR
+cat /etc/passwd   -->we can check default file details here also
+
+cat /etc/shells   -->to check all the shellls available in our system
+---------------------------------------------------------
+How to switch from onwe to another shell?
+
+
+
