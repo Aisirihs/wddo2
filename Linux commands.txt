@@ -1,0 +1,73 @@
+ctrl+alt+t    - to open terminal
+ctrl+shift+  - to increase font
+
+1. $ ls                           - list out all files and directories present in the given directory in alphabetical order
+    $ ls -r                        - list out all files and directories present in the given directory in reverse alphabetical order
+    $ ls -l                        - to display long listing
+    $ ls -t                        - creation or last modified time, most recent file will be at the top
+    $ ls -ltr                      - most recent file will be at the bottom
+    $ ls -a                        - it will display all files including hidden files
+    $ ls | wc -l                 - displays no. of files
+    $ ls -a | wc -l              - displays no. of hidden files
+    $ ls -A                       - display all except . and ..
+    $ ls - F                      - display all files by type - if its a directory, ends with '/'
+                                                                               if its a executable file, ends with '*'
+                                                                               if its a link file,ends with ''@'
+    $ ls -F/bin
+    $ ls -f                       - it will display all files including hidden files but disable color convention
+    $ ls -i                       - it will display all files including inode(index node) number
+                                       inode - address of the location where file attributes(file size,no. of links to the file, owner name, group name, creation time,modified time)  are stored. 
+
+
+    $ ls dir1                    - list out all files and directories present in dir1
+    $ ls -R                      - list out all files and directories including the sub directory contents
+    $ ls -s                       - no. of blocks used= 1 block=1 kb or 4kb
+    $ ls -h                       - lists the files in human readable form(memory statistics are displayed in kb)
+
+By default ls command only displays files n directories but not sub directory
+
+    $ ls -l /etc                - displays files n directories inside etc directory in long form
+    $ ls -l | head             -displays only top 10 entries
+    $ ls -l | head -3         -displays only top 3 entries
+    $ ls -l | tail               -displays only bottom 10 entries
+    $ ls -l | tail -3           -displays only bottom 3 entries
+    $ ls -l /etc | more      - to display contents page by page only in forward direction
+    $ ls -l /etc | less        -to display contents page by page both in forward n backward direction
+                                     press q to come out of a page
+    
+u can use multiple files simultaneously - ex: ls -ltr, ls -rlt, ls -ai....
+
+If the file names starts with . it is considered as hidden file
+    
+
+2. $ man command        - gives complete info abt that particular command
+    $ man ls                     - gives complete info abt ls, what n all options are available with ls command
+    $ man ls > ls_doc      - total description abt ls command will be redirected to ls_doc file
+
+3. $ gedit ls_doc           - we can see the description in the fom of file(notepad file)
+
+ gedit filename  --> opening the editor to add some content
+
+
+_______________________________________________________________________________________________________________________________________
+
+sort command
+
+1. -o Option: Unix also provides us with special facilities like if you want to write the output to a new file, output.txt, redirects the output 
+    Using the -o option is functionally the same as redirecting the output to a file. 
+
+2. -r Option: Sorting In Reverse Order: You can perform a reverse-order sort using the -r flag. 
+  $ sort -r inputfile.txt
+
+3. -n Option: To sort a file numerically used –n option. -n option is also predefined in Unix as the above options are. This option is used to sort the file with numeric data present inside. 
+ $ sort -n filename.txt
+
+4. -nr option: To sort a file with numeric data in reverse order we can use the combination of two options 
+
+5. -k Option: Unix provides the feature of sorting a table on the basis of any column number by using -k option. 
+
+6. -c option: This option is used to check if the file given is already sorted or not 
+ 
+7. -u option: To sort and remove duplicates pass the -u option to sort. This will write a sorted list to standard output and remove duplicates. 
+
+8. -M Option: To sort by month pass the -M option to sort. This will write a sorted list to standard output ordered by month name. 

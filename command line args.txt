@@ -1,0 +1,168 @@
+Command line arguments
+
+*Arguements passed from command prompt at the time of executing the scripts
+* we can customize the behaviour of the script
+*based on our arguments, the script will work
+
+$ ./test.sh  learning linux is easy
+$#    ---> no. of arguments(4)
+$0   ---> Script name(./test.sh)
+$1   ---> 1st argument(learning)
+$2   ---> 2nd argument(linux)
+$3   ---> 3rd  argument(is)
+$4   ---> 4th argument(easy)
+$*   --->All arguments(learning linux is easy) 
+            "$1c$2c$3c$4"
+             where c is the first character of IFS(internal field seperator)
+             default value of c is space
+$@  ---> All arguments(learning linux is easy)with space seperator
+             "$1"  "$2" "$3" "$4"
+$?    ---> exit code of previously executed command/script
+
+___________________________________________________________
+
+How to check default IFS:
+
+$ set | grep "IFS"
+
+we can change IFS value
+IFS="-"
+echo " All arguments with @:  $@"
+echo " All arguments with *:  $*"
+
+output - All arguments with @:learning linux is easy
+             All arguments with *:learning-linux-is-easy
+_______________________________________________
+
+count the no. of characters in APPLE
+
+#! /bin/bash
+echo "APPLE" | wc -c
+(-c - no. of characters)
+output- 6
+Because by default, echo will consider '/' also as a character so that after APPLE , next statement will get displayed in next line
+
+echo -n "APPLE"
+now after adding -n, it will consider as a next line
+so, output - 5
+_______________________________________________________________
+
+len=$(echo -n "APPLE" | wc -c)    --->command substitution
+echo "length of the given string is:$len") --->variable substitution
+________________________________________________
+
+command substitution and variable substitution
+
+$x
+${x}
+
+'cmd'
+$(cmd)
+
+__________________________________________
+
+script to create log file with timestamp:
+
+test.sh
+-----------
+#! /bin/bash
+date  +%d_%m_%Y_%H_%M_%S
+
+timestamp =$(date  +%d_%m_%Y_%H_%M_%S)
+echo "This is data to logfile" >> ${timestamp.log}
+echo "This is extra data to logfile" >> ${timestamp.log}
+date >> ${timestamp.log}
+echo "data written to log file successfully"
+
+
+___________________________________________
+
+> - overwrite
+>> - append
+
+Ex: echo "hello" > abc.txt
+      cat abc.txt
+      hello
+      echo "mango" > abc.txt
+     cat abc.txt
+      mango
+     
+echo "apple" >> abc.txt
+cat abc.txt
+mango
+apple
+
+____________________________________________
+View contents of the file using cat command
+
+1. cat filename            ---> to view the contents of the file
+2. cat -n filename        ---> to view the contents of the file with the display of line no.
+3. cat -b filename        ---> to view the contents of the file with the line no by skipping the numbers for blank lines
+4. cat file1.txt file2.txt file3.txt   --> we can see the contents of multiple files at the same time
+_____________________________________________
+various utilities of cat command(cat will work only for files n not for directories)
+
+1. create a file with some content
+cat > file1.txt  (if this file is not available, it will create that file)
+required data
+ctrl+d  -->save and exit
+
+2. Append some extra data to an existing file
+cat >> file1.txt
+required data
+ctrl+d  -->save and exit
+
+3. to view the contents of a file
+
+4. to copy contents of one file to another
+ cat file1.txt > file2.txt
+
+5. to append contents of one file to another
+  cat file1.txt >> file2.txt
+
+6.to copy the contents of multiple files to a single file
+  cat file1.txt file2.txt file3.txt > total.txt
+
+7. cp test.txt abc  - copy the contents from file test to directory abc
+_________________________________________________
+
+8. tac filename   --> to display file contents in reverse order(vertical reversal)...means content in the last line will show in first line last but one in 2nd line..
+
+9. rev filename  --> to display file contents in reverse order(horizontal reversal)
+
+----------------------------------------------------------------
+
+cat will display total file content at a time. It's only suitable for small files. If the file contains thousands of lines, then its not recommended.
+
+___________________________________________________
+head command
+
+1. head abc.txt             -->displays first 10 lines of the file abc.txt
+2. head -5 abc.txt or head -n 5 abc.txt  -->displays first 5 lines of the file abc.txt
+3. head -n -5 abc.txt     -->displays all lines from the top except last 5 lines
+4. head -c 5 abc.txt   --> display first 5 characters from top of the file. In linux every character will take 1 byte. hence it will display first 5 bytes of file content.
+5. head -c -5 abc.txt  -->display first 5 characters from top of the file except last 5 characters.
+
+tail command (completely opposite to head command)
+
+1.tail abc.txt   --> displays last 10 lines from the file
+2.tail -n 5 abc.txt  -->last 5 lines
+3.tail -n -5 abc.txt  -->last 5 lines
+4.tail -c 100 abc.txt  -->display 100 bytes of content from bottom of the file
+--------------------------------------------------------------------------
+write a command to display from 3rd to 7th line:
+head -7 abc.txt | tail -5 
+
+write a command to display from 23rd to 15th line:
+head -23 abc.txt | tail -9
+
+
+
+
+
+
+    
+
+
+
+

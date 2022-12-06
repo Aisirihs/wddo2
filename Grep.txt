@@ -1,0 +1,86 @@
+Find command
+tree command
+-exec
+locate
+grep
+
+
+
+Jackpot assignment:
+----------------------------
+mkdir jackpot
+mkdir jackpot/dir{1..100}
+touch jackpot/dir{1..100}/file{1..100}
+
+(we want to create one file named sunny.txt in some random directory)
+
+[shuf command: 
+shuf -i 1-100 -n 1
+49  -->one random no. we get
+
+shuf -i 1-100 -n 2
+38
+45   --> to random no.s it will generate ]
+
+touch jackpot/dir$(shuf -i 1-100 -n 1)/sunny.txt
+[ if we need to find in which directory sunny.txt file got created)
+find jackpot -type f -name 'sunny.txt'
+[if we need to find sunny.txt n move to desktop]
+find jackpot -type f -name 'sunny.txt' -exec mv {} ~/Desktop \;
+
+[delete all 100 directories present in jackpot including jackpot]
+find jackpot -type d -exec rmdir {} \;
+____________________________
+
+to find only directories inside /dev folder n limit its search to only 2 levels of depth?
+Ans-  find /dev -maxdepth 2 -type d
+
+To find only files starts fom root directory where file name ends with .txt
+Ans- find / -type f -name '*.txt'
+
+To find all files n directory inside /dev directory upto max. 3 levels of depth n size> 200 kb
+Ans- find /dev -maxdepth 3 -size +200k
+
+Which command will find all files below home directory where file size > 3mb and remove all those files
+find ~ -type f -size +3M -exec rm {} \;
+
+difference b/w find and locate commands
+
+______________________________________________
+Search multiple content in a file with the help of egrep
+
+grep -e 'java' -e 'linux' demo.txt
+
+instead of -e option, we can use egrep command
+
+egrep '(java|linux)' demo.txt
+
+egrep -i '(java|linux)' demo.txt  ==>either java or linux
+
+*egrep can understand that['(java|linux)' ] pattern. but grep cant
+*grep can understand some patterns but not all
+
+grep -i '^the' demo.txt    --> to search where it starts with 'the' (both upper or lower)
+^a   -->starts with a
+______________________________________
+grep with -F option
+
+-F   - serach for a group of fixed strings
+
+grep -F "java
+>linux
+>python" demo.txt
+
+searching for java,linux,python inside demo.txt
+
+*instead of -F option, we can use fgrep command
+fgrep -Fixed String Global Regular Expression Print
+*fgrep can't understand patterns
+
+--------------------------------------------------------------
+fgrep -f option
+
+fgrep -f file1.txt
+
+_________________________________________________
+it is recommended to use grep -F., grep -e coz egrep,fgrep are depricated in most unix flavours
